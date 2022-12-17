@@ -52,7 +52,7 @@ float CalibratedSensor::getSensorAngle(){
     return calibratedAngle;
 }
 
-void CalibratedSensor::calibrate(BLDCMotor& motor){
+float CalibratedSensor::calibrate(BLDCMotor& motor){
 
     Serial.println("Starting Sensor Calibration.");
 
