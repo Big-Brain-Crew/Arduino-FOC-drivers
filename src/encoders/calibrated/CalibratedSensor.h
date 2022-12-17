@@ -21,17 +21,17 @@ public:
     /**
     * Calibrate method computes the LUT for the correction
     */
-    virtual void calibrate(BLDCMotor& motor);
+    virtual float calibrate(BLDCMotor& motor);
 
     // voltage to run the calibration: user input
-    float voltage_calibration = 1;                              
+    float voltage_calibration = 1;
 
 protected:
 
     /**
     * getSenorAngle() method of CalibratedSensor class.
     * This should call getAngle() on the wrapped instance, and then apply the correction to
-    * the value returned. 
+    * the value returned.
     */
     virtual float getSensorAngle() override;
     /**
@@ -42,7 +42,7 @@ protected:
     * delegate instance of Sensor class
     */
     Sensor& _wrapped;
-    
+
      // lut size, currently constan. Perhaps to be made variable by user?
     const int  n_lut { 128 } ;
     // create pointer for lut memory
