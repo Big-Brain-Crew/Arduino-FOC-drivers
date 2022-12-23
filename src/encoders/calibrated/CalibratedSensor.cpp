@@ -52,7 +52,7 @@ float CalibratedSensor::getSensorAngle(){
     return calibratedAngle;
 }
 
-float CalibratedSensor::calibrate(BLDCMotor& motor){
+calibration_data_t CalibratedSensor::calibrate(BLDCMotor& motor){
 
     Serial.println("Starting Sensor Calibration.");
 
@@ -252,7 +252,10 @@ float CalibratedSensor::calibrate(BLDCMotor& motor){
 
     Serial.println("Sensor Calibration Done.");
 
-    return motor.zero_electric_angle;
+    calibration_data_t calib_data;
+    calib_data.zero_electric_angle = motor.zero_electric_angle;
+    calib_data.direction = directionSensor;
+    return calib_data;
 
 }
 

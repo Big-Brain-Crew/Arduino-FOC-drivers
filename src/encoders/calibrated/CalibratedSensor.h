@@ -5,6 +5,10 @@
 #include "BLDCMotor.h"
 #include "common/base_classes/FOCMotor.h"
 
+struct calibration_data_t{
+    float zero_electric_angle;
+    int direction;
+};
 
 class CalibratedSensor: public Sensor{
 
@@ -21,7 +25,7 @@ public:
     /**
     * Calibrate method computes the LUT for the correction
     */
-    virtual float calibrate(BLDCMotor& motor);
+    virtual calibration_data_t calibrate(BLDCMotor& motor);
 
     // voltage to run the calibration: user input
     float voltage_calibration = 1;
